@@ -2,6 +2,7 @@ package com.example.sninkovic_ns.fragmenti17.Fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -18,26 +19,57 @@ import java.util.List;
 
 public class MasterFragment  extends Fragment {
 
-    AdapterView.OnItemSelectedListener listener;
+        OnItemSelectedListener listener;
+//---------------------------------------------------------------------
+        public void onCreate(Bundle savedInstanceState){super.onCreate(savedInstanceState);}
 
-        public void onCreate(Bundle savedInstanceState){super.onCreate(savedInstanceState)}
-
-
-    public void onActivityCreated(Bundle savedInstanceState){
+//-------------------------------------------------------------------   ------------
+          public void onActivityCreated(Bundle savedInstanceState) {
                 super.onActivityCreated(savedInstanceState);
 
         final List<String> jelaNames = JelaProvajder.getImenaJela();
 
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item2);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item2, jelaNames);
         ListView listView=(ListView) getActivity().findViewById(R.id.listaJela);
 
         listView.setAdapter(arrayAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 listener.onItemSelected(position);
         }
     });
+
+}
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
+        if (container == null) {
+            return null;
+        }
+
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
+
+        return view;
+
+
+
+    }
+
+
+
+
+
+
+
+        public interface OnItemSelectedListener {
+
+             public void onItemSelected(int position);
+
+
+}
 
 }

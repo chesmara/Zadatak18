@@ -1,7 +1,7 @@
 package com.example.sninkovic_ns.fragmenti17.Provajderi;
 
-import com.appstructural.jelovnik15.jelovnik_fragmenti.model.Jela;
-import com.appstructural.jelovnik15.jelovnik_fragmenti.model.Sastojci;
+import com.example.sninkovic_ns.fragmenti17.Modeli.Jela;
+import com.example.sninkovic_ns.fragmenti17.Modeli.Sastojci;
 
 import java.util.ArrayList;
 import java.util.List;

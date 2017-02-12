@@ -1,6 +1,6 @@
 package com.example.sninkovic_ns.fragmenti17.Provajderi;
 
-import com.appstructural.jelovnik15.jelovnik_fragmenti.model.Category;
+import com.example.sninkovic_ns.fragmenti17.Modeli.Category;
 
 import java.util.ArrayList;
 import java.util.List;
