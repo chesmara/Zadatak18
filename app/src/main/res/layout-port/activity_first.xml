@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
->
+    >
 
     <FrameLayout
         android:id="@+id/list_view"
@@ -13,7 +13,3 @@
     </FrameLayout>
 
 </LinearLayout>
-
-
-
-
