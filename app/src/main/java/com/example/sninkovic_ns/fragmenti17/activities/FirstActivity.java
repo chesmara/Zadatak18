@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.sninkovic_ns.fragmenti17.Fragments.DetailFragment;
 import com.example.sninkovic_ns.fragmenti17.Fragments.MasterFragment;
 import com.example.sninkovic_ns.fragmenti17.R;
 
-public class FirstActivity extends Activity implements MasterFragment.OnItemSelectedListener {
+public class FirstActivity extends AppCompatActivity implements MasterFragment.OnItemSelectedListener {
 
 
     boolean landscape=false;
@@ -18,6 +19,22 @@ public class FirstActivity extends Activity implements MasterFragment.OnItemSele
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_action_name);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.show();
+        }
+
+
+
 
         if(savedInstanceState == null){
 
