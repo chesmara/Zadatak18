@@ -22,11 +22,36 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/list_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-    </FrameLayout>
+    <!-- DrawerLayout is a top-level container for window content that allows for interactive "drawer" views to be pulled out from one or both vertical edges of the window. -->
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Main layout -->
+        <FrameLayout
+            android:id="@+id/master_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- NavigationDrawer layout -->
+        <RelativeLayout
+            android:id="@+id/drawerPane"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start">
+
+            <!-- List of NavigationDrawer items (pages) -->
+            <ListView
+                android:id="@+id/navList"
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"
+                android:background="#ffffffff" />
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>
