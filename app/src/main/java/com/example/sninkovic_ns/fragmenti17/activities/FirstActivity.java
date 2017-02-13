@@ -61,7 +61,7 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
 
 
 
-    boolean landscape=false;
+   // boolean landscape=false;
 
 
 
@@ -134,7 +134,7 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         }
 
         if (findViewById(R.id.detail_view) != null) {
-            landscape = true;
+            landscapeMode = true;
             getFragmentManager().popBackStack();
 
             DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.detail_view);
@@ -155,35 +155,7 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
 
 
 
@@ -192,7 +164,7 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
             itemId=id;
 
 
-        if (landscape) {
+        if (landscapeMode) {
             // If the device is in the landscape mode updates detail fragment's content.
             DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.detail_view);
             detailFragment.updateContent(id);
@@ -205,32 +177,13 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.addToBackStack(null);
             ft.commit();
+
+            masterShown = false;
+            detailShown = true;
         }
     }
 
-    private void selectItemFromDrawer(int position) {
 
-        if (position == 0) {
-            // FirstActivity is already shown
-        } else if (position == 1) {
-            Intent settings = new Intent(FirstActivity.this,SettingsActivity.class);
-            startActivity(settings);
-        } else if (position == 2) {
-            if (dialog == null){
-                dialog = new AboutDialog(FirstActivity.this).prepareDialog();
-            } else {
-                if (dialog.isShowing()) {
-                    dialog.dismiss();
-                }
-            }
-
-            dialog.show();
-        }
-
-        drawerList.setItemChecked(position, true);
-        setTitle(drawerItems.get(position).getTitle());
-        drawerLayout.closeDrawer(drawerPane);
-    }
     @Override
     public void onBackPressed() {
 
@@ -279,6 +232,14 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         getSupportActionBar().setTitle(title);
     }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        drawerToggle.syncState();
+    }
+
 
     @Override
     public void onConfigurationChanged(Configuration configuration) {
@@ -286,6 +247,30 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
 
         // Pass any configuration change to the drawer toggle
         drawerToggle.onConfigurationChanged(configuration);
+    }
+
+    private void selectItemFromDrawer(int position) {
+
+        if (position == 0) {
+            // FirstActivity is already shown
+        } else if (position == 1) {
+            Intent settings = new Intent(FirstActivity.this,SettingsActivity.class);
+            startActivity(settings);
+        } else if (position == 2) {
+            if (dialog == null){
+                dialog = new AboutDialog(FirstActivity.this).prepareDialog();
+            } else {
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+
+            dialog.show();
+        }
+
+        drawerList.setItemChecked(position, true);
+        setTitle(drawerItems.get(position).getTitle());
+        drawerLayout.closeDrawer(drawerPane);
     }
 
 
