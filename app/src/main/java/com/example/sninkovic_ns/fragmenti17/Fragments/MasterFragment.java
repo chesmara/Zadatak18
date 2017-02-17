@@ -30,6 +30,10 @@ public class MasterFragment  extends Fragment {
           public void onActivityCreated(Bundle savedInstanceState) {
                 super.onActivityCreated(savedInstanceState);
 
+
+
+   /*
+
         final List<String>jelaNames = JelaProvajder.getImenaJela();
 
 
@@ -43,6 +47,8 @@ public class MasterFragment  extends Fragment {
                 listener.onItemSelected(position);
         }
     });
+*/
+
 
 }
 
