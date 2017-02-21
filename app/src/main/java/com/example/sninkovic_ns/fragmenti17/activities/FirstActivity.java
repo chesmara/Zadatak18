@@ -24,7 +24,9 @@ import com.example.sninkovic_ns.fragmenti17.Fragments.MasterFragment;
 import com.example.sninkovic_ns.fragmenti17.Modeli.NavigationItem;
 import com.example.sninkovic_ns.fragmenti17.R;
 import com.example.sninkovic_ns.fragmenti17.adapters.DrawerAdapter;
+import com.example.sninkovic_ns.fragmenti17.async.SimpleService;
 import com.example.sninkovic_ns.fragmenti17.dialogs.AboutDialog;
+import com.example.sninkovic_ns.fragmenti17.tools.ReviewerTools;
 
 import java.util.ArrayList;
 
@@ -210,11 +212,17 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         return super.onCreateOptionsMenu(menu);
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create:
+                int status = ReviewerTools.getConnectivityStatus(getApplicationContext());
                 Toast.makeText(this, "Action " + getString(R.string.fragment_master_action_create) + " executed.", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(FirstActivity.this, SimpleService.class);
+                intent.putExtra("vrstaNeta",status);
+                startService(intent);
                 break;
             case R.id.action_update:
                 Toast.makeText(this, "Action " + getString(R.string.fragment_detal_action_update) + " executed.", Toast.LENGTH_SHORT).show();
