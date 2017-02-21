@@ -26,6 +26,9 @@ public class SimpleService extends Service {
         if ( status == ReviewerTools.TYPE_MOBILE) {
             new SimpleSyncTask(getApplicationContext()).execute(status);
         }
+        else if (status == ReviewerTools.TYPE_WIFI){
+            new SimpleSyncTask(getApplicationContext()).execute(status);
+        }
             stopSelf();
 
                 return START_NOT_STICKY;

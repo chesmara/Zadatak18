@@ -225,7 +225,11 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
                 startService(intent);
                 break;
             case R.id.action_update:
+                status = ReviewerTools.getConnectivityStatus(getApplicationContext());
                 Toast.makeText(this, "Action " + getString(R.string.fragment_detal_action_update) + " executed.", Toast.LENGTH_SHORT).show();
+                Intent intent1=new Intent(FirstActivity.this, SimpleService.class);
+                intent1.putExtra("valja", status);
+                startService(intent1);
                 break;
             case R.id.action_delete:
                 Toast.makeText(this, "Action " + getString(R.string.fragment_detal_action_delete) + " executed.", Toast.LENGTH_SHORT).show();
