@@ -219,7 +219,7 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         switch (item.getItemId()) {
             case R.id.action_create:
                 int status = ReviewerTools.getConnectivityStatus(getApplicationContext());
-                Toast.makeText(this, "Action " + getString(R.string.fragment_master_action_create) + " executed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Provera vrste konekcije na net je pokrenuta", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(FirstActivity.this, SimpleService.class);
                 intent.putExtra("vrstaNeta",status);
                 startService(intent);

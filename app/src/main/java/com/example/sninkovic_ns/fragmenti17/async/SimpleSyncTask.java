@@ -34,7 +34,7 @@ public class SimpleSyncTask extends AsyncTask< Integer, Void, Integer>{
 
     @Override
     protected void onPostExecute(Integer kojiNet) {
-        Toast.makeText(context, ReviewerTools.getConnectionType(kojiNet), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Koristite " + ReviewerTools.getConnectionType(kojiNet), Toast.LENGTH_SHORT).show();
     }
 
 
